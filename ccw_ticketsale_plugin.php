@@ -11,11 +11,9 @@ License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 //add_action('lib/users.php', 'view_details');
 
 /* All other plugin files */
+require_once( plugin_dir_path(__FILE__) . '/vendor/autoload.php');
 require_once( plugin_dir_path(__FILE__) . '/ccw_ticketsale_config.php');
 require_once( plugin_dir_path(__FILE__) . '/lib/CCWTS_Controller.php');
-require_once( plugin_dir_path(__FILE__) . '/lib/dompdf/autoload.inc.php');
-
-
 require_once( plugin_dir_path(__FILE__) . '/lib/CCWTS_HTTP.php' );
 require_once( plugin_dir_path(__FILE__) . '/lib/CCWTS_Extra.php' );
 require_once( plugin_dir_path(__FILE__) . '/ccw_ticketsale_menu.php' );
