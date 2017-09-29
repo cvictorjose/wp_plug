@@ -8,16 +8,16 @@ class CCWTS_Menu{
 
     public function register_pages(){
        add_menu_page( 
-            __( 'TicketSale', 'ccwts_text' ),
+            __( 'Reservation', 'ccwts_text' ),
             'TicketSale',
             'manage_options',
-            'ticketsales',
+            'reservation',
             array($this, 'show_template'),
             'dashicons-chart-pie',
             6
         );
         add_submenu_page( 
-            'ticketsales',
+            'reservation',
             __( 'Users', 'ccwts_text' ),
             'Users',
             'manage_options',

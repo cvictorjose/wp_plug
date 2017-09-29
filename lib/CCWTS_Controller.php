@@ -5,9 +5,6 @@ class CCWTS_Controller {
 
     public    $extra_actions;
     public    $back_link;
-    protected $schema;
-    protected $fks;
-    protected $where_clauses;
 
     function __construct($entity_name_pl=null)
     {
@@ -34,22 +31,12 @@ class CCWTS_Controller {
         $get_url = sprintf('/%s%s', $this->entity_name_pl, (($get_url_query_string) ? '?'.$get_url_query_string : '')); */
 
 
-        $get_url= $this->entity_name_pl;
-        $paged = $_REQUEST['paged'];
-        $per_page = $_REQUEST['page_s'];
-        if ($per_page<1){ $per_page = 20; }
+        $get_url= "1/$this->entity_name_pl/1";
+        $response =  ticketServer_get($get_url);
 
-        $orderby =$_REQUEST['orderby'];
-        $order =$_REQUEST['order'];
+        var_dump($response);
 
-        if (empty($orderby)){ $orderby =  $this->schema->orderby; }
-        if (empty($order)){ $order =  $this->schema->order; }
-
-        $ee =  ccwts_get_2('/'.$get_url.'/1?page_s='.$per_page.'&page_n='.$paged.'&sort='.$orderby.'&order='.$order);
-        //echo "<br>PPag: ".$ee->per_page . " + CurrentPag:".$ee->current_page. " + DA:".$ee->from. " + fino".$ee->to ;
-        //$ee=$ee->data;
-
-        $usr= json_decode($ee['body']);
+       /* $usr= json_decode($ee['body']);
         echo "ID:".$usr->id."<br>NAME:".$usr->name;
 
         ob_end_clean();
@@ -96,16 +83,12 @@ class CCWTS_Controller {
         $dompdf->setPaper('A4', 'landscape');
         $dompdf->render();
         $dompdf->output();
-        $dompdf->stream("DYI",array("Attachment"=>0));
+        $dompdf->stream("DYI",array("Attachment"=>0));*/
 
 
        /* $output = $pdf->output();
         file_put_contents('../storage/invoices/'.$order_id.'-invoice.pdf', $output);
         return $this->createMessage("Pdf invoice created","200");*/
-        ?>
-        <br>
-  <!--  <a href="admin.php?page=<?/*= $this->entity_name_pl; */?>&action=create&<?/*= $get_url_query_string; */?>" class="button button-primary">Crea <?/*= ccwts_label($this->entity_name_sgl); */?></a>--><?php
-
     }
 
     function listen()
