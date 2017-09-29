@@ -124,54 +124,6 @@ function ccwts_remote_login(){
     return $response;
 }
 
-/*function ccwts_session(){ // old version, using transient
-    global $laravel_session;
-    $laravel_session = urlencode(get_transient('ccwts_session'));
-    $login_status = ccwts_get('/login');
-    //print_r($login_status);
-    if($login_status->session_cookie!=''){
-        if($laravel_session != $login_status->session_cookie){
-            set_transient( 'ccwts_session', $login_status->session_cookie, 60*60*2 );
-            $laravel_session = $login_status->session_cookie;
-        }
-        //print 'SESSION COOKIE: '.$login_status->session_cookie;
-    }else{
-        $session_cookie = ccwts_remote_login();
-        set_transient( 'ccwts_session', $session_cookie, 60*60*2 );
-        $laravel_session = $session_cookie;
-        //print 'REMOTE LOGIN: '.urlencode($session_cookie);
-    }
-    //print 'LARAVEL_SESSION: '.$laravel_session;
-    // Getting schema
-    global $gschema;
-    $gschema = ccwts_schema();
-}*/
-
-/*function ccwts_session(){ // new version, using cookie
-    global $laravel_session;
-    global $xsrf_token;
-    //$laravel_session = urlencode($_COOKIE['ccwts_session']);
-    $laravel_session = $_COOKIE['ccwts_session'];
-    $xsrf_token = $_COOKIE['xsrf_token'];
-    $login_status = ccwts_get('/login');
-    if($login_status->session_cookie!=''){
-        //if($laravel_session != $login_status->session_cookie){
-            setcookie('ccwts_session', $login_status->session_cookie, time()+7200);
-            setcookie('xsrf_token', $login_status->xsrf_token, time()+7200);
-            $laravel_session = $login_status->session_cookie;
-            $xsrf_token = $login_status->xsrf_token;
-        //}
-    }else{
-        $login_response = ccwts_remote_login();
-        setcookie('ccwts_session', $login_response['laravel_session'], time()+7200);
-        setcookie('xsrf_token', $login_response['xsrf_token'], time()+7200);
-        $laravel_session    = $login_response['laravel_session'];
-        $xsrf_token         = $login_response['xsrf_token'];
-    }
-    // Getting schema
-    global $gschema;
-    $gschema = ccwts_schema();
-}*/
 
 function ccwts_session(){ // new version, using session
     session_start();

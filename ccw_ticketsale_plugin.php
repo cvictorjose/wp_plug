@@ -15,8 +15,7 @@ require_once( plugin_dir_path(__FILE__) . '/ccw_ticketsale_config.php');
 require_once( plugin_dir_path(__FILE__) . '/lib/CCWTS_Controller.php');
 require_once( plugin_dir_path(__FILE__) . '/lib/dompdf/autoload.inc.php');
 
-// require_once( plugin_dir_path(__FILE__) . '/lib/CCWTS_Table.php' );
-// require_once( plugin_dir_path(__FILE__) . '/lib/CCWTS_Form.php' );
+
 require_once( plugin_dir_path(__FILE__) . '/lib/CCWTS_HTTP.php' );
 require_once( plugin_dir_path(__FILE__) . '/lib/CCWTS_Extra.php' );
 require_once( plugin_dir_path(__FILE__) . '/ccw_ticketsale_menu.php' );

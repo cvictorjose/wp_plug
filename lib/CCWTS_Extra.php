@@ -1,21 +1,5 @@
 <?php
 
-function ccwts_sgl($plural){
-    /*$singulars = array(
-        'ticketsales'       =>  'ticketsale',
-        'tickets'           =>  'ticket',
-        'servicecategories' =>  'servicecategory',
-        'ticketcategories'  =>  'ticketcategory',
-    );
-    if(!empty($singulars[$plural])){
-        return $singulars[$plural];
-    }else{
-        return preg_replace('/s$/', '', $plural);
-    }*/
-    global $gschema;
-    return $gschema->$plural->sgl;
-}
-
 function ccwts_label($entity_name){
    $labels = array(
         'ticket'            =>  'biglietto',
@@ -67,17 +51,6 @@ function ccwts_include_page($page){
         return false;
     }
 }
-
-/*function ccwts_include_table($table){
-    $filename = plugin_dir_path(__FILE__).'../tables/'.$table.'.php';
-    if(file_exists($filename)){
-        include($filename);
-        return true;
-    }else{
-        return false;
-    }
-}*/
-
 
 
 function ccwts_notice_success($msg){
