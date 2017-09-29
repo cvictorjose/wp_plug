@@ -32,9 +32,17 @@ class CCWTS_Controller {
 
 
         $get_url= "1/$this->entity_name_pl/1";
-        $response =  ticketServer($get_url);
+        $response =  json_decode(ticketServer($get_url));
 
-        var_dump($response);
+        $array_prn= array();
+        foreach ($response->results as $p){
+           // print_r($p->pnr);
+            //$array_prn[]=$p->pnr;
+            array_push($array_prn,$p->pnr);
+        }
+
+        print_r($array_prn);
+
 
        /* $usr= json_decode($ee['body']);
         echo "ID:".$usr->id."<br>NAME:".$usr->name;

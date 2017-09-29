@@ -11,7 +11,7 @@ function ticketServer_remote($uri, $method){
      switch ($method) {
         case "post":
             $data= '{"seats":[{"event_id":"30","reservation_id":"600","area_code":"SB","seat_row":"1","seat_num":"8",
-            "title_type":"I1"}],"id_cash_desk":"07639182","deadline":600}';
+            "title_type":"I1"}],"id_cash_desk":"07639182","deadline":5}';
             /* config post */
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
@@ -20,8 +20,6 @@ function ticketServer_remote($uri, $method){
                     'Content-Length: ' . strlen($data))
             );
             break;
-        default:
-            $result = ($result = curl_exec($ch)) ? $result : curl_error($ch);
     }
 
     $result = ($result = curl_exec($ch)) ? $result : curl_error($ch);
