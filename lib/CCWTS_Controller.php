@@ -32,7 +32,7 @@ class CCWTS_Controller {
 
 
         $get_url= "1/$this->entity_name_pl/1";
-        $response =  ticketServer_get($get_url);
+        $response =  ticketServer($get_url);
 
         var_dump($response);
 

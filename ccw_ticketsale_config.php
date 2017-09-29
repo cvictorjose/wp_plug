@@ -7,8 +7,12 @@ global $ws_password;
 $ws_password = 'diy2017!';
 global $xsrf_token;
 
-/*
+global $ca_path,$key_path ,$crt_path;
+$ca_path = plugin_dir_path(__FILE__) . '/lib/cert/ca.crt';
+$key_path= plugin_dir_path(__FILE__) . '/lib/cert/shop_1.key';
+$crt_path= plugin_dir_path(__FILE__) . '/lib/cert/shop_1.crt';
 
+/*
 $url="https://ts.alligator.ticket/1/reservation/1"; // url API funzione test TS
 $ca_path = plugin_dir_path(__FILE__) . '/lib/cert/ca.crt';
 $key_path= plugin_dir_path(__FILE__) . '/lib/cert/shop_1.key';

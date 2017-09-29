@@ -1,17 +1,28 @@
 <?php
-function ticketServer_remote($uri, $params=array()){
-    global $ws_url;
-    var_dump($ws_url.$uri);
-
-    $ca_path = plugin_dir_path(__FILE__) . 'cert/ca.crt';
-    $key_path= plugin_dir_path(__FILE__) . 'cert/shop_1.key';
-    $crt_path= plugin_dir_path(__FILE__) . 'cert/shop_1.crt';
+function ticketServer_remote($uri, $method){
+    global $ws_url,$ca_path,$key_path ,$crt_path;
 
     $ch = curl_init($ws_url.$uri);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSLKEY, $key_path);
     curl_setopt($ch, CURLOPT_CAINFO, $ca_path);
     curl_setopt($ch, CURLOPT_SSLCERT, $crt_path);
+
+     switch ($method) {
+        case "post":
+            $data= '{"seats":[{"event_id":"30","reservation_id":"600","area_code":"SB","seat_row":"1","seat_num":"8",
+            "title_type":"I1"}],"id_cash_desk":"07639182","deadline":600}';
+            /* config post */
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                    'Content-Type: application/json',
+                    'Content-Length: ' . strlen($data))
+            );
+            break;
+        default:
+            $result = ($result = curl_exec($ch)) ? $result : curl_error($ch);
+    }
 
     $result = ($result = curl_exec($ch)) ? $result : curl_error($ch);
     if(!$result){
@@ -22,18 +33,13 @@ function ticketServer_remote($uri, $params=array()){
     curl_close($ch);
 
     //error_log('RESPONSE: '.print_r($response, true));
-//    if(is_wp_error($response)){
-//        return array('body'=>json_encode(array('data'=>$response->get_error_message(),'code'=>500)));
-//    }else{
-//        return $response;
-//    }
 }
 
 
-function ticketServer_get($uri){
+function ticketServer($uri){
     try{
-        $response = ticketServer_remote($uri);
-        $array = json_decode($response['body']);
+        $response = ticketServer_remote($uri,"post");
+        //$array = json_decode($response['body']);
         return $response;
     }catch(Exception $e){
         return array();
