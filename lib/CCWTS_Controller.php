@@ -13,7 +13,7 @@ class CCWTS_Controller {
     {
         if(!$this->entity_name_pl)
             $this->entity_name_pl = $_REQUEST['page'];
-        $this->entity_name_sgl = ccwts_sgl($this->entity_name_pl);
+        //$this->entity_name_sgl = ccwts_sgl($this->entity_name_pl);
 
         $this->back_link = sprintf('<a href="admin.php?page=%s">Torna all\'elenco</a>', $this->entity_name_pl);
         $this->extra_actions = array();
@@ -58,9 +58,7 @@ class CCWTS_Controller {
                 <head>
                     <meta charset="utf-8">
                     <title>Invoice</title>
-                    <link rel="stylesheet" href="style.css">
                     <link rel="license" href="https://www.opensource.org/licenses/mit-license/">
-                    <script src="script.js"></script>
                 </head>
                 <body>
                     <header>

@@ -79,33 +79,30 @@ class CCWTS_Menu{
             $ctrl->listen();
         }
     }
-
-    // public function page_ticketsales(){
-    //   if(intval($_REQUEST['ticketsale'])>0){
-    //     ccwts_include_page("ticketsale");
-    //   }else{
-    //     ccwts_include_page("ticketsales");
-    //   }
-    // }
-
-    // public function page_rates(){
-    //     ccwts_include_page('rates');
-    // }
-
-    // public function page_tickets($argg){
-    //   if(intval($_REQUEST['ticket'])>0){
-    //     ccwts_include_page("ticket");
-    //   }else{
-    //     ccwts_include_page("tickets");
-    //   }
-    // }
-
 }
 
 if( is_admin() )
     $ccwts_menu = new CCWTS_Menu();
 
 
+// public function page_ticketsales(){
+//   if(intval($_REQUEST['ticketsale'])>0){
+//     ccwts_include_page("ticketsale");
+//   }else{
+//     ccwts_include_page("ticketsales");
+//   }
+// }
 
+// public function page_rates(){
+//     ccwts_include_page('rates');
+// }
+
+// public function page_tickets($argg){
+//   if(intval($_REQUEST['ticket'])>0){
+//     ccwts_include_page("ticket");
+//   }else{
+//     ccwts_include_page("tickets");
+//   }
+// }
 
 
